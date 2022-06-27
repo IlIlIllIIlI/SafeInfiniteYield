@@ -6017,7 +6017,7 @@ end)
 Players.LocalPlayer.OnTeleport:Connect(function(State)
 	if State == Enum.TeleportState.Started then
 		if KeepInfYield and queueteleport then
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/IlIlIllIIlI/SafeInfiniteYield/main/source'))()")
 		end
 	end
 end)
@@ -6061,32 +6061,6 @@ addcmd('clraliases',{},function(args, speaker)
 	notify('Aliases Modified','Removed all aliases')
 	updatesaves()
 	refreshaliases()
-end)
-
-addcmd('discord', {'support', 'help'}, function(args, speaker)
-	local rhttp = game:GetService('HttpService') 
-	if toClipboard then
-		toClipboard('https://discord.com/invite/dYHag43eeU')
-		notify('Discord Invite', 'Copied to clipboard!\ndiscord.gg/dYHag43eeU')
-	else
-		notify('Discord Invite', 'discord.gg/dYHag43eeU')
-	end
-	local req = syn and syn.request or http and http.request or http_request or fluxus and fluxus.request or getgenv().request or request
-	if req then
-		req({
-			Url = 'http://127.0.0.1:6463/rpc?v=1',
-			Method = 'POST',
-			Headers = {
-				['Content-Type'] = 'application/json',
-				Origin = 'https://discord.com'
-			},
-			Body = rhttp:JSONEncode({
-				cmd = 'INVITE_BROWSER',
-				nonce = rhttp:GenerateGUID(false),
-				args = {code = 'dYHag43eeU'}
-			})
-		})
-	end
 end)
 
 addcmd('keepiy', {}, function(args, speaker)
